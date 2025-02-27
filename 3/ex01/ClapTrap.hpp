@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 class ClapTrap
 {
@@ -31,4 +32,8 @@ class ClapTrap
 	~ClapTrap();
 	// Debug:
 	void printStatus();	
+	// Setters:
+	void setHitpoints(const int new_hitpoints);
+	void setEnergyPoints(const int new_energy_points);
+	void setAttackDamage(const int new_attack_damage);
 };

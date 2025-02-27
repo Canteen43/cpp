@@ -77,3 +77,16 @@ void ClapTrap::printStatus()
 		<< ", Energy Points: " << energy_points
 		<< ", Attack Damage: " << attack_damage << "\n";
 }
+// Setters:
+void ClapTrap::setHitpoints(const int new_hitpoints)
+{
+	hitpoints = new_hitpoints;
+}
+void ClapTrap::setEnergyPoints(const int new_energy_points)
+{
+	energy_points = new_energy_points;
+}
+void ClapTrap::setAttackDamage(const int new_attack_damage)
+{
+	attack_damage = new_attack_damage;
+}
