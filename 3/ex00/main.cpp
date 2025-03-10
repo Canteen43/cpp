@@ -7,6 +7,7 @@ int main ()
 	ClapTrap B(A);
 	ClapTrap C("Dingus");
 	B = C;
+	ClapTrap D;
 
 	std::cout << "\nTesting mandatory functions:\n";
 	A.attack("your mom");

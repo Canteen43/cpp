@@ -21,7 +21,9 @@ class ClapTrap
 	// •void beRepaired(unsigned int amount);
 	void beRepaired(unsigned int amount);
 	// My extra functions:
-	// Constructor:
+	// Default constructor
+	ClapTrap();
+	// Parametric Constructor:
 	ClapTrap(std::string set_name);
 	// Copy constructor
 	ClapTrap(const ClapTrap& other);
