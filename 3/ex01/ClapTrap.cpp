@@ -1,6 +1,15 @@
 #include "ClapTrap.hpp"
 #include <iostream>
-// Constructor:
+// Default Constructor:
+ClapTrap::ClapTrap()
+:	name("Nameless"),
+	hitpoints(10),
+	energy_points(10),
+	attack_damage(0)
+{
+	std::cout << "ClapTrap " << name << " called Constructor\n";
+}
+// Parametric Constructor:
 ClapTrap::ClapTrap(std::string set_name)
 :	name(set_name),
 	hitpoints(10),
