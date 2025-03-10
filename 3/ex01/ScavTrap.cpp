@@ -1,7 +1,9 @@
+#include <iostream>
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 // Default constructor
-ScavTrap::ScavTrap() : ClapTrap()
+ScavTrap::ScavTrap()
+: ClapTrap()
 {
 	hitpoints = 100;
 	energy_points = 50;
@@ -9,7 +11,8 @@ ScavTrap::ScavTrap() : ClapTrap()
 	std::cout << "ScavTrap " << name << " called Default Constructor\n";
 };
 // Parametric Constructor:
-ScavTrap::ScavTrap(std::string set_name) : ClapTrap(set_name)
+ScavTrap::ScavTrap(std::string set_name)
+: ClapTrap(set_name)
 {
 	hitpoints = 100;
 	energy_points = 50;
@@ -19,10 +22,7 @@ ScavTrap::ScavTrap(std::string set_name) : ClapTrap(set_name)
 };
 // Copy constructor
 ScavTrap::ScavTrap(const ScavTrap& other)
-:	name(other.name),
-	hitpoints(other.hitpoints),
-	energy_points(other.energy_points),
-	attack_damage(other.attack_damage)
+: ClapTrap(other)
 {
 	std::cout << "ScavTrap " << name << " called Copy Constructor\n";
 };

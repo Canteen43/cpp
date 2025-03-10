@@ -3,6 +3,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 TARGET = a.out
 SRC = main.cpp
 SRC += ClapTrap.cpp
+SRC += ScavTrap.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(TARGET)

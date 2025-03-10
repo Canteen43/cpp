@@ -1,6 +1,8 @@
+#pragma once
 #include "ClapTrap.hpp"
 class ScavTrap : public ClapTrap
 {
+	public:
 	// Default constructor
 	ScavTrap();
 	// Parametric Constructor:

@@ -1,4 +1,3 @@
-#pragma once
 #include "ClapTrap.hpp"
 #include <iostream>
 // Default Constructor:
