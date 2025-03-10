@@ -19,6 +19,7 @@ int main ()
 	A.printStatus();
 	B.printStatus();
 	C.printStatus();
+	D.printStatus();
 
 	std::cout << "\nTesting destruction:\n";
 }

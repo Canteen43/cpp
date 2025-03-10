@@ -29,10 +29,7 @@ ScavTrap::ScavTrap(const ScavTrap& other)
 // Copy assignment operator:
 ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 {
-	name = other.name;
-	hitpoints = other.hitpoints;
-	energy_points = other.energy_points;
-	attack_damage = other.attack_damage;
+	ClapTrap::operator=(other);
 	std::cout << "ScavTrap " << name << " called Copy Assignment Operator\n";
 	return *this;
 };
