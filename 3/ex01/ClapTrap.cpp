@@ -1,3 +1,4 @@
+#pragma once
 #include "ClapTrap.hpp"
 #include <iostream>
 // Default Constructor:
@@ -7,7 +8,7 @@ ClapTrap::ClapTrap()
 	energy_points(10),
 	attack_damage(0)
 {
-	std::cout << "ClapTrap " << name << " called Constructor\n";
+	std::cout << "ClapTrap " << name << " called Default Constructor\n";
 }
 // Parametric Constructor:
 ClapTrap::ClapTrap(std::string set_name)
@@ -16,7 +17,7 @@ ClapTrap::ClapTrap(std::string set_name)
 	energy_points(10),
 	attack_damage(0)
 {
-	std::cout << "ClapTrap " << name << " called Constructor\n";
+	std::cout << "ClapTrap " << name << " called Parametric Constructor\n";
 }
 // Copy constructor
 ClapTrap::ClapTrap(const ClapTrap& other)

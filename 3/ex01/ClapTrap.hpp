@@ -4,7 +4,7 @@ class ClapTrap
 {
 	// It will be called ClapTrap and will have the following private attributes initialized
 	// to the values specified in brackets:
-	private:
+	protected:
 	// •Name, which is passed as parameter to a constructor
 		std::string name;
 	// •Hit points (10), represent the health of the ClapTrap
