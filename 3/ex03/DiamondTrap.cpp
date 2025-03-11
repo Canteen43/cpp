@@ -2,6 +2,7 @@
 #include "DiamondTrap.hpp"
 // Default constructor
 DiamondTrap::DiamondTrap()
+: ClapTrap(), FragTrap(), ScavTrap()
 {
 	// Name, which is passed as parameter to a constructor
 	name = "Nameless";
@@ -18,11 +19,12 @@ DiamondTrap::DiamondTrap()
 };
 // Parametric Constructor:
 DiamondTrap::DiamondTrap(std::string set_name)
+: ClapTrap(set_name + "_clap_name"), FragTrap(set_name + "_clap_name"), ScavTrap(set_name + "_clap_name")
 {
 	// Name, which is passed as parameter to a constructor
 	name = set_name;
 	// • ClapTrap::name (parameter of the constructor + "_clap_name" suffix)
-	ClapTrap::name = set_name + "_clap_name";
+	// ClapTrap::name = set_name + "_clap_name";
 	// • Hit points (FragTrap)
 	hitpoints = FragTrap::hitpoints;
 	// • Energy points (ScavTrap)
@@ -36,12 +38,14 @@ DiamondTrap::DiamondTrap(std::string set_name)
 DiamondTrap::DiamondTrap(const DiamondTrap& other)
 : ClapTrap(other), FragTrap(other), ScavTrap(other)
 {
+	name = other.name;
 	std::cout << "DiamondTrap " << name << " called Copy Constructor\n";
 };
 // Copy assignment operator:
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other)
 {
 	ClapTrap::operator=(other);
+	name = other.name;
 	std::cout << "DiamondTrap " << name << " called Copy Assignment Operator\n";
 	return *this;
 };
