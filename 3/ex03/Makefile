@@ -1,4 +1,4 @@
-c++
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 TARGET = a.out
 SRC = main.cpp
