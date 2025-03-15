@@ -5,6 +5,7 @@ SRC = main.cpp
 SRC += Animal.cpp
 SRC += Cat.cpp
 SRC += Dog.cpp
+SRC += Brain.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(TARGET)
