@@ -11,4 +11,7 @@ class Dog : public Animal
 		Dog& operator=(const Dog& other);
 		// Destructor:
 		~Dog();
+		// Overriding makeSound() to make correct sound
+		void makeSound(void) const;
+
 };

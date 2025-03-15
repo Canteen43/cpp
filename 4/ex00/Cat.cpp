@@ -24,3 +24,8 @@ Cat::~Cat()
 {
 	std::cout << "Cat called Destructor\n";
 };
+// Overriding makeSound() to make correct sound
+void Cat::makeSound(void) const
+{
+	std::cout << "Meeoooooow\n";
+};

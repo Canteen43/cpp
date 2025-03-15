@@ -27,12 +27,7 @@ Animal::~Animal()
 // It will print an appropriate sound (cats don’t bark).
 void Animal::makeSound(void) const
 {
-	if (type.empty())
-		std::cout << "*Generic Animal sound*\n";
-	else if (type == "Cat")
-		std::cout << "Meeoooooow\n";
-	else if (type == "Dog")
-		std::cout << "Wooof wooof\n";	
+	std::cout << "*Generic Animal sound*\n";
 };
 // Getter that is needed for main
 const std::string Animal::getType(void) const

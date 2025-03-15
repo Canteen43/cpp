@@ -24,3 +24,8 @@ Dog::~Dog()
 {
 	std::cout << "Dog called Destructor\n";
 };
+// Overriding makeSound() to make correct sound
+void Dog::makeSound(void) const
+{
+	std::cout << "Wooof wooof\n";	
+};

@@ -35,7 +35,7 @@ int main()
 		Foo.makeSound();
 		std::cout << "\n";
 		Foo = Garfield;
-		Foo.makeSound();
+		std::cout << Foo.getType() << "\n";
 		std::cout << "\nDestruction:\n";
 	}
 

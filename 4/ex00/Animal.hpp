@@ -13,11 +13,11 @@ class Animal
 		// Copy assignment operator:
 		Animal& operator=(const Animal& other);
 		// Destructor:
-		~Animal();
+		virtual ~Animal();
 		// Every animal must be able to use the member function:
 		// makeSound()
 		// It will print an appropriate sound (cats don’t bark).
-		void makeSound(void) const;
+		virtual void makeSound(void) const;
 		// Getter that is needed for main
 		const std::string getType(void) const;
 };
