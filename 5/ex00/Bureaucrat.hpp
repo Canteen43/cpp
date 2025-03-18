@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <exception>
+#include <iostream>
 
 class Bureaucrat
 {
@@ -19,8 +20,8 @@ class Bureaucrat
 		// Destructor
 		~Bureaucrat();
 		// Subject Requirements:
-		std::string getName();
-		int getGrade();
+		std::string getName() const;
+		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
 		// Custom exceptions
@@ -39,3 +40,4 @@ class Bureaucrat
 			}
 		};
 };
+std::ostream& operator<<(std::ostream& lhs, const Bureaucrat& rhs);

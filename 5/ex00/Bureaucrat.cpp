@@ -28,11 +28,11 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat& other)
 Bureaucrat::~Bureaucrat()
 {};
 // Subject requirements
-std::string Bureaucrat::getName()
+std::string Bureaucrat::getName() const
 {
 	return name;
 };
-int Bureaucrat::getGrade()
+int Bureaucrat::getGrade() const
 {
 	return grade;
 };
@@ -46,3 +46,8 @@ void Bureaucrat::decrementGrade()
 	if (grade == 150)
 		throw GradeTooLowException();
 };
+std::ostream& operator<<(std::ostream& lhs, const Bureaucrat& rhs)
+{
+	lhs << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << ".\n";
+	return lhs;
+}
