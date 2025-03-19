@@ -2,30 +2,35 @@
 #include <string>
 #include <exception>
 #include <iostream>
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
 	private:
 		std::string name;
-		bool isSigned;
-		int	signingGrade;
 		int executingGrade;
+		int	signingGrade;
+		bool isSigned;
 	public:
 		// Default constructor
 		Form();
 		// Parametric constructor
-		Form(std::string set_name, int set_grade); 
+		Form(std::string setName, int setSigningGrade, int setExecutingGrade);
 		// Copy constructor
 		Form(Form& other);
 		// Copy assignment operator
 		Form& operator=(Form& other);
 		// Destructor
 		~Form();
-		// Subject Requirements:
+		// Getters
 		std::string getName() const;
 		bool getIsSigned() const;
 		int getSigningGrade() const;
 		int getExecutingGrade() const;
+		// More subject functions
+		void beSigned(Bureaucrat& signer);
 		// Custom exceptions
 		class GradeTooHighException : public std::exception
 		{

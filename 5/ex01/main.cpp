@@ -1,30 +1,22 @@
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 
 int main()
 {
 	std::cout << "\033[35mTesting construction and copying\033[0m\n";
-	Bureaucrat Biden;
-	std::cout << Biden;
-	Bureaucrat Hillary("Crooked", 1);
-	std::cout << Hillary;
-	Biden = Hillary;
-	std::cout << Biden;
-	Bureaucrat Kamala(Hillary);
-	std::cout << Kamala;
+	Form Standard;
+	std::cout << Standard;
+	Form topDog("Important", 1, 1);
+	std::cout << topDog;
+	Standard = topDog;
+	std::cout << Standard;
+	Form highLevel(topDog);
+	std::cout << highLevel;
 
 	std::cout << "\n\033[35mTesting exceptions\033[0m\n";
 	try
 	{
-		Biden.incrementGrade();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	Bureaucrat workerUSAID;
-	try
-	{
-		workerUSAID.decrementGrade();
+		Form tooSecret("Whoooa", 0, 1);
 	}
 	catch(const std::exception& e)
 	{
@@ -32,7 +24,7 @@ int main()
 	}
 	try
 	{
-		Bureaucrat Elon("Elon", 0);
+		Form tooTrivial("Idiot", 150, 151);
 	}
 	catch(const std::exception& e)
 	{
@@ -40,7 +32,17 @@ int main()
 	}
 	try
 	{
-		Bureaucrat workerUSAIDhowElonSeesThem("Idiot", 151);
+		Bureaucrat Looser("Larry", 145);
+		Looser.signForm(topDog);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		Bureaucrat Winner("Wouter", 1);
+		Winner.signForm(highLevel);
 	}
 	catch(const std::exception& e)
 	{
