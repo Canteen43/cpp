@@ -51,7 +51,7 @@ int Form::getExecutingGrade() const
 // More subject functions
 void Form::beSigned(Bureaucrat& signer)
 {
-	if (signer.getGrade() > executingGrade)
+	if (signer.getGrade() > signingGrade)
 		throw GradeTooLowException();
 	isSigned = true;
 };
