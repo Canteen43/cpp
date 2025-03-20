@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <fstream>
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
@@ -8,8 +9,6 @@ class Bureaucrat;
 
 class ShrubberyCreationForm : public AForm
 {
-	private:
-		std::string target;
 	public:
 		// Default constructor
 		ShrubberyCreationForm();
@@ -23,4 +22,4 @@ class ShrubberyCreationForm : public AForm
 		~ShrubberyCreationForm();
 		// ex02 execute function
 		void execute(Bureaucrat const & executor) const;
-}
+};

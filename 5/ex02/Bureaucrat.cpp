@@ -59,7 +59,19 @@ void Bureaucrat::signAForm(AForm& AFormToSign)
 		std::cerr << name << " couldn't sign " << AFormToSign.getName() << " because " << e.what() << '\n';
 	}
 };
-
+// ex02 addition
+void Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << name << " executed " << form.getName() << "\n";
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << name << " couldn't execute " << form.getName() << " because " << e.what() << '\n';
+	}
+};
 
 std::ostream& operator<<(std::ostream& lhs, const Bureaucrat& rhs)
 {

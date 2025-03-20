@@ -4,6 +4,7 @@ TARGET = a.out
 SRC = main.cpp
 SRC += Bureaucrat.cpp
 SRC += AForm.cpp
+SRC += ShrubberyCreationForm.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(TARGET)

@@ -18,10 +18,25 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& o
 	return *this;
 };
 // Destructor
-ShrubberyCreationForm::~ShrubberyCreationForm();
+ShrubberyCreationForm::~ShrubberyCreationForm()
+{};
 // ex02 execute function
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	checkExecutionRequierements();
+	// Checking if Form is signed and Bureaucrat grade is high enough
+	checkExecutionRequierements(executor);
+
+	// Opening file to read from (contains tree ASCII art)
+	std::ifstream infile("ShrubberySource.txt");
+	if (!infile)
+		throw std::runtime_error("Opening infile failed!");
+
+	// Opening file to write to
+	std::string outfile_name = getTarget() + "_shrubbery";
+	std::ofstream outfile(outfile_name.c_str());
+	if (!outfile)
+		throw std::runtime_error("Opening outfile failed!");
 	
+	// Copying contents
+	outfile << infile.rdbuf();
 };

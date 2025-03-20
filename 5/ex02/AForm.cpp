@@ -66,7 +66,7 @@ void AForm::beSigned(Bureaucrat& signer)
 	isSigned = true;
 };
 // ex02 functions
-void AForm::checkExecutionRequierements(const Bureaucrat& executor)
+void AForm::checkExecutionRequierements(const Bureaucrat& executor) const
 {
 	if (executor.getGrade() > executingGrade)
 		throw GradeTooLowException();

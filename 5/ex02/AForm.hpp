@@ -35,7 +35,7 @@ class AForm
 		void beSigned(Bureaucrat& signer);
 		// ex02 functions
 		virtual void execute(Bureaucrat const & executor) const = 0;
-		void checkExecutionRequierements(const Bureaucrat& executor);
+		void checkExecutionRequierements(const Bureaucrat& executor) const;
 		// Custom exceptions
 		class GradeTooHighException : public std::exception
 		{
