@@ -5,6 +5,8 @@ SRC = main.cpp
 SRC += Bureaucrat.cpp
 SRC += AForm.cpp
 SRC += ShrubberyCreationForm.cpp
+SRC += RobotomyRequestForm.cpp
+SRC += PresidentialPardonForm.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(TARGET)

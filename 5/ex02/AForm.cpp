@@ -77,6 +77,14 @@ void AForm::checkExecutionRequierements(const Bureaucrat& executor) const
 
 std::ostream& operator<<(std::ostream& lhs, const AForm& rhs)
 {
-	lhs << rhs.getName() << ": Required grades: sign " << rhs.getSigningGrade() << ", exec " << rhs.getExecutingGrade() << ", Status: " << rhs.getIsSigned() << ".\n";
+	lhs << rhs.getName()
+		 << ": Required grades: sign "
+		 << rhs.getSigningGrade()
+		 << ", exec " << rhs.getExecutingGrade()
+		 << ", Status: "
+		 << rhs.getIsSigned()
+		 << ", Target: "
+		 << rhs.getTarget()
+		 << ".\n";
 	return lhs;
 }
