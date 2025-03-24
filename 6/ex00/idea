@@ -1,7 +1,0 @@
-1) Try stoi()
-2) If fails and if strlen = 1, save char (watch out for printable chars)
-3) check if string contains f
-4) yes: try stof
-5) no: try stod
-
-cave: it seems like stof will accept trailing garbage. maybe the other functions will as well
