@@ -137,8 +137,19 @@ void convertInt(char *input)
 
 void convertFloat(char *input)
 {
-	// Extracting float
 	float nbr = 0;
+	// Extracting special floats
+	std::string str(input);
+	if (str == "-inff")
+		nbr = -INFINITY;
+	if (str == "+inff")
+		nbr = INFINITY;
+	if (str == "nanf")
+		nbr = NAN;
+	
+	// Extracting float
+	if ( nbr == 0)
+	{
 	int i = 0;
 	int factor = 1;
 	if (input[i] == '-')
@@ -158,9 +169,10 @@ void convertFloat(char *input)
 		nbr += factor * (input[i] - '0') / pow(10, i - decimalPos);
 		++i;
 	}
+	}
 
 	// Char conversion
-	if (nbr < 0 || nbr > 128)
+	if (nbr < 0 || nbr > 128 || nbr == INFINITY || nbr == -INFINITY || std::isnan(nbr))
 		std::cout << "char: impossible\n";
 	else if (nbr < 33 || nbr > 127)
 		std::cout << "char: Non displayable\n";
@@ -168,7 +180,10 @@ void convertFloat(char *input)
 		std::cout << "char: '" << static_cast<char>(nbr) << "'\n";
 
 	// Int conversion
-	std::cout << "int: " << static_cast<int>(nbr) << "\n";
+	if (nbr > (float)INT_MAX || nbr < (float)INT_MIN || std::isnan(nbr))
+		std::cout << "int: impossible\n";
+	else
+		std::cout << "int: " << static_cast<int>(nbr) << "\n";
 
 	// Float conversion
 	std::cout << "float: " << nbr << "f\n";
@@ -177,8 +192,68 @@ void convertFloat(char *input)
 	std::cout << "double: " << static_cast<double>(nbr) << "\n";
 }
 
+void convertDouble(char *input)
+{
+	double nbr = 0;
+	// Extracting special doubles
+	std::string str(input);
+	if (str == "-inf")
+		nbr = -INFINITY;
+	if (str == "+inf")
+		nbr = INFINITY;
+	if (str == "nan")
+		nbr = NAN;
+	
+	// Extracting double
+	if (nbr == 0)
+	{
+	int i = 0;
+	int factor = 1;
+	if (input[i] == '-')
+	{
+		factor = -1;
+		++i;
+	}
+	while (isdigit(input[i]))
+	{
+		nbr = nbr * 10 + (input[i] - '0') * factor;
+		++i;
+	}
+	int decimalPos = i;
+	++i;
+	while (isdigit(input[i]))
+	{
+		nbr += factor * (input[i] - '0') / pow(10, i - decimalPos);
+		++i;
+	}
+	}
+
+	// Char conversion
+	if (nbr < 0 || nbr > 128 || nbr == INFINITY || nbr == -INFINITY || std::isnan(nbr))
+		std::cout << "char: impossible\n";
+	else if (nbr < 33 || nbr > 127)
+		std::cout << "char: Non displayable\n";
+	else
+		std::cout << "char: '" << static_cast<char>(nbr) << "'\n";
+
+	// Int conversion
+	if (nbr > (double)INT_MAX || nbr < (double)INT_MIN || std::isnan(nbr))
+		std::cout << "int: impossible\n";
+	else
+		std::cout << "int: " << static_cast<int>(nbr) << "\n";
+
+	// Float conversion
+	std::cout << "float: " << static_cast<float>(nbr) << "f\n";
+	
+	// Double conversion
+	std::cout << "double: " << nbr << "\n";
+}
+
 void ScalarConverter::convert(char *input)
 {
+	// Making sure that float and double always print exactly one digit after the decimal point
+	std::cout << std::fixed << std::setprecision(1);
+
 	if (isChar(input))
 		convertChar(input);
 	else if (isInt(input))
@@ -186,7 +261,7 @@ void ScalarConverter::convert(char *input)
 	else if (isFloat(input))
 		convertFloat(input);
 	else if (isDouble(input))
-		std::cout << "It's a double!\n";
+		convertDouble(input);
 	
 	else
 		std::cout << "Invalid input\n";

@@ -2,7 +2,8 @@
 #include <iostream>
 #include <cctype>	//for isdigit()
 #include <climits>	//for INT_MAX and INT_MIN
-#include <math.h>	//for pow()
+#include <cmath>	//for pow(), INFINITY, NAN
+#include <iomanip>
 
 
 class ScalarConverter
