@@ -7,22 +7,18 @@ void increase(double *nbr)
 	*nbr += 1;
 };
 
-void printNbr(double *nbr)
+template <typename Banana>
+void print(Banana *elem)
 {
-	std::cout << *nbr << "\n";
-};
-
-void printStr(std::string *str)
-{
-	std::cout << *str << "\n";
-};
+	std::cout << *elem << "\n";
+}
 
 int main( void )
 {
-	double doubleArr[] = {0.5,1.4,2.3,3.2,4.1,5.0};
-	iter(doubleArr, 6, increase);
-	iter(doubleArr, 6, printNbr);
-	std::cout << "\n\n";
+	double doubleArr[] = {0.1, 0.2, 0.3};
+	iter(doubleArr, 3, increase);
+	iter(doubleArr, 3, print);
+	std::cout << "\n";
 	std::string strArr[] = {"Luke", "I", "am", "your", "father"};
-	iter(strArr, 5, printStr);
+	iter(strArr, 5, print);
 }
