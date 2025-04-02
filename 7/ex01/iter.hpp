@@ -2,9 +2,9 @@
 // • The first parameter is the address of an array.
 // • The second one is the length of the array.
 // • The third one is a function that will be called on every element of the array.
-template <typename Banana>
-void iter(Banana* arrAddress, int length, void (*func)(Banana*))
+template <typename Banana, typename Apple>
+void iter(Banana* arrAddress, int length, Apple func)
 {
 	for (int i = 0; i < length; i++)
-		func(&arrAddress[i]);
+		func(arrAddress[i]);
 }

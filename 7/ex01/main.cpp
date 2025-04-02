@@ -2,23 +2,23 @@
 #include <iostream>
 #include <string>
 
-void increase(double *nbr)
+void increase(double& nbr)
 {
-	*nbr += 1;
+	nbr += 1;
 };
 
 template <typename Banana>
-void print(Banana *elem)
+void print(Banana elem)
 {
-	std::cout << *elem << "\n";
+	std::cout << elem << "\n";
 }
 
 int main( void )
 {
 	double doubleArr[] = {0.1, 0.2, 0.3};
 	iter(doubleArr, 3, increase);
-	iter(doubleArr, 3, print);
+	iter(doubleArr, 3, print<double>);
 	std::cout << "\n";
 	std::string strArr[] = {"Luke", "I", "am", "your", "father"};
-	iter(strArr, 5, print);
+	iter(strArr, 5, print<std::string>);
 }
