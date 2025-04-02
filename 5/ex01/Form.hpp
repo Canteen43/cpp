@@ -9,9 +9,9 @@ class Bureaucrat;
 class Form
 {
 	private:
-		std::string name;
-		int executingGrade;
-		int	signingGrade;
+		const std::string name;
+		const int executingGrade;
+		const int signingGrade;
 		bool isSigned;
 	public:
 		// Default constructor

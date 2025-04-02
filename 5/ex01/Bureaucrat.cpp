@@ -5,13 +5,13 @@ Bureaucrat::Bureaucrat()
 {};
 // Parametric constructor
 Bureaucrat::Bureaucrat(std::string set_name, int set_grade)
+: name(set_name)
 {
 	if (set_grade > 150)
 		throw GradeTooLowException();
 	else if (set_grade < 1)
 		throw GradeTooHighException();
 	grade = set_grade;
-	name = set_name;
 };
 // Copy constructor
 Bureaucrat::Bureaucrat(Bureaucrat& other)
@@ -21,7 +21,6 @@ Bureaucrat::Bureaucrat(Bureaucrat& other)
 Bureaucrat& Bureaucrat::operator=(Bureaucrat& other)
 {
 	grade = other.grade;
-	name = other.name;
 	return *this;
 }
 // Destructor
