@@ -2,11 +2,14 @@
 #include <string>
 #include <exception>
 #include <iostream>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
 	private:
-		std::string name;
+		const std::string name;
 		int grade;
 	public:
 		// Default constructor
@@ -24,6 +27,8 @@ class Bureaucrat
 		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
+		// ex01 addition
+		void signForm(Form& formToSign);
 		// Custom exceptions
 		class GradeTooHighException : public std::exception
 		{
