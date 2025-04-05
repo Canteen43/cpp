@@ -43,7 +43,5 @@ int Span::longestSpan()
 {
 	if (bucket.size() < 2)
 		throw std::runtime_error("Span has less than two values.");
-	std::multiset<int>::iterator last = bucket.end();
-	last--;
-	return *last - *bucket.begin();
+	return *bucket.rbegin() - *bucket.begin();
 };
