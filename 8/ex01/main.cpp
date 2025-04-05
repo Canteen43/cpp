@@ -43,8 +43,35 @@ int main()
 	{
 		Vicky.push_back(std::rand());
 	}
-	D.addRange(Vicky.begin(), Vicky.end());
+	D.addRange(hugeSize, Vicky.begin(), Vicky.end());
 	std::cout << D.shortestSpan() << std::endl;
 	std::cout << D.longestSpan() << std::endl;
+	std::cout << "What if the range is too large?\n";
+	Span E(hugeSize - 1);
+	try
+	{
+		D.addRange(hugeSize, Vicky.begin(), Vicky.end());
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "What if I call shortest or longest Span on empty spans?\n";
+	try
+	{
+		std::cout << E.shortestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		std::cout << E.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return 0;
 }
