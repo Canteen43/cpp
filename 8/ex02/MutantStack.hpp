@@ -1,16 +1,13 @@
 #pragma once
 #include <stack>
-class MutantStack : public std::stack
+#include <deque>
+template <typename Banana, typename Conty = std::deque<Banana> >
+class MutantStack : public std::stack<Banana, Conty>
 {
-
+	public:
+		typedef typename Conty::iterator iterator;
+		iterator begin(); 
+		iterator end();
 };
-
-/*Ideas:
-The stack has a member variable container.
-Its functions are all implemented using the functions of the base container.
-The container is only 'protected' so that MutantStack can still access it.
-Questions:
-1) Do I really need rend, rbegin and all the const stuff?
-2) What is the syntax for writing this kind of stuff? */
 
 #include "MutantStack.tpp"
