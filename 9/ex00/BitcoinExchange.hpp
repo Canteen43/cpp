@@ -3,6 +3,9 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
+#include <sstream>  // for std::stringstream
+#include <cstdio> // for scanf()
+#include <cstdlib> // for atoi()
 class BitcoinExchange
 {
 	private:
@@ -16,4 +19,4 @@ class BitcoinExchange
 		std::string convertLine(std::string line);
 };
 
-// std::tm extractDate(char *str);
+int extractDate(std::string datestr, std::tm& date);
