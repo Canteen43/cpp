@@ -1,7 +1,8 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-TARGET = banana
+TARGET = btc
 SRC = main.cpp
+SRC += BitcoinExchange.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(TARGET)
