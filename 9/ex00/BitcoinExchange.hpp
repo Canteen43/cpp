@@ -4,12 +4,12 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>  // for std::stringstream
-#include <cstdio> // for scanf()
-#include <cstdlib> // for atoi()
+#include <cstdio> // for sscanf()
+#include <cstring> // for strlen()
 class BitcoinExchange
 {
 	private:
-		std::map<struct tm, float> container;
+		std::map<std::tm, double> container;
 	public:
 		BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange& other);
@@ -19,4 +19,5 @@ class BitcoinExchange
 		std::string convertLine(std::string line);
 };
 
+bool isFormatted(char* format, char* string);
 int extractDate(std::string datestr, std::tm& date);
