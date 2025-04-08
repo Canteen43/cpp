@@ -4,12 +4,43 @@
 
 int main(int argc, char** argv)
 {
+	// Checking arguments
 	if (argc != 2)
 	{
 		std::cerr << "Error: program requires exactly one argument.\n";
 		return 1;
 	}
-	
+
+	// Opening data file
+	std::fstream datafile();
+	if (!datafile)
+	{
+		std::cerr << "Error: could not open data file.\n";
+		return 1;
+	}
+
+	// Creating BitcoinExchange element
+	BitcoinExchange exchanger;
+
+	// Going through data file line by line
+	{
+		std::string line;
+
+		// Skipping first line
+		std::getline(datafile, line);
+
+		// Adding lines to container
+		while (std::getline(datafile, line))
+		{
+			if (exchanger.addData(line) == -1)
+			{
+				std::cout << "Error: importing data file failed.\n";
+				return 1;
+			}
+		}
+	}
+
+	// Opening input file
 	std::fstream infile(argv[1]);
 	if (!infile)
 	{
@@ -17,9 +48,9 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
-	// Instance of the BitcoinExchange for importing .csv file and converting input file lines
-	BitcoinExchange exchanger;
 
+
+	// Going through input file line by line
 	std::string line;
 	std::getline(infile, line);
 	if (line != "date | value")
@@ -32,6 +63,7 @@ int main(int argc, char** argv)
 		std::cout << exchanger.convertLine(line) << "\n";
 	}
 
+	// Closing input file
 	infile.close();
 
 	return 0;
