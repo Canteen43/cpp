@@ -2,7 +2,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 TARGET = banana
 SRC = main.cpp
-SRC += Span.cpp
+SRC += RPN.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(TARGET)
