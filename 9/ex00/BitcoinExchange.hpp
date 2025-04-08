@@ -7,6 +7,8 @@
 #include <cstdio> // for sscanf()
 #include <cstring> // for strlen()
 
+#define DATAFILE "data.csv"
+
 // std::tm does not inherently support comparison operations so I have to provide it
 struct tmFunctor
 {
@@ -29,7 +31,6 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange& other);
 		BitcoinExchange& operator=(const BitcoinExchange& other);
 		~BitcoinExchange();
-		void loadCSV(char* filename);
 		int addData(std::string line);
 		std::string convertLine(std::string line);
 };

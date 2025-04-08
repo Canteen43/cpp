@@ -12,6 +12,40 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 }
 BitcoinExchange::~BitcoinExchange()
 {}
+int BitcoinExchange::addData(std::string line)
+{
+	// Checking datestr and converting it to std::tm date
+	std::string datestr = line.substr(0, 10);
+	std::tm date;
+	if (extractDate(datestr, date) == -1)
+		return -1;
+	
+	// Checking middlestr
+	if (line.size() <= 10)
+		return -1;
+	std::string middlestr = line.substr(10, 1);
+	if (middlestr != ",")
+		return -1;
+
+	// Checking valuestr and extracting value
+	if (line.size() <= 11)
+		return -1;
+	std::string valuestr = line.substr(11);
+	double value;
+	std::istringstream iss(valuestr);
+	iss >> std::noskipws >> value;
+	if (!iss.eof())
+		return -1;
+	if (iss.fail())
+		return -1;
+	if (value < 0)
+		return -1;
+
+	// Adding pair to container
+	container[date] = value;
+
+	return 0;
+}
 std::string BitcoinExchange::convertLine(std::string line)
 {
 	// Checking datestr and converting it to std::tm date
@@ -23,8 +57,6 @@ std::string BitcoinExchange::convertLine(std::string line)
 		errorMessage << "Error: bad input => " << datestr;
 		return errorMessage.str();
 	}
-	// Showing the date that was extracted
-	// std::cout << std::asctime(&date);
 
 	// Checking middlestr
 	if (line.size() <= 10)
@@ -33,7 +65,7 @@ std::string BitcoinExchange::convertLine(std::string line)
 	if (middlestr != " | ")
 		return "Error: ' | ' is not in correct place";
 
-	// Checking valuestr
+	// Checking valuestr and extracting value
 	if (line.size() <= 13)
 		return "Error: line too short.";
 	std::string valuestr = line.substr(13);
