@@ -1,10 +1,14 @@
 #pragma once
 #include <stack>
+#include <string>
+#include <cstring>
+#include <stdexcept>
+#include <climits>
 
 class RPN
 {
 	private:
-		std::stack<int> container;
+		RPN();
 	public:
-		int calculate(std::string);
-}
+		static int calculate(char* str);
+};

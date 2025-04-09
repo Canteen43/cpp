@@ -1,6 +1,6 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-TARGET = banana
+TARGET = RPN
 SRC = main.cpp
 SRC += RPN.cpp
 OBJ = $(SRC:.cpp=.o)
