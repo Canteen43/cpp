@@ -3,6 +3,7 @@ Requirements:
 	- Program that takes positive ints as args
 		- they come as separate args. not in one string
 	- Special sort
+	- allow duplicates for now
 
 Output:
 	Before: 3 5 9 7 4
@@ -32,9 +33,9 @@ int main(int argc, char** argv)
 			std::istringstream iss(argv[i]);
 			iss >> std::noskipws >> value;
 			if (!iss.eof())
-				throw std::runtime_error(std::string("Argument '") + argv[i] + "' contains trailing garbage");
+				throw std::runtime_error(std::string("Argument '") + argv[i] + "' contains non-digits");
 			if (iss.fail())
-				throw std::runtime_error(std::string("Argument '") + argv[i] + "' could not be converted to int");
+				throw std::runtime_error(std::string("Argument '") + argv[i] + "' is off limits");
 			if (value < 0)
 				throw std::runtime_error(std::string("Argument '") + argv[i] + "' is smaller than zero");
 			mainContainer.push_back(value);
