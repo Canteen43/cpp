@@ -1,7 +1,8 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-TARGET = banana
+TARGET = PmergeMe
 SRC = main.cpp
+SRC += PmergeMe.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(TARGET)
