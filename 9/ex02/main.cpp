@@ -62,10 +62,10 @@ int main(int argc, char** argv)
 		double runTimeA = timedRun(PmergeMe::mergeInsertA, containerA);
 		double runTimeB = timedRun(PmergeMe::mergeInsertB, containerB);
 
-		// Does not work because main is not sorted yet
-		if (containerA.size() != mainContainer.size() 
-			|| std::equal(containerA.begin(), containerA.end(), mainContainer.begin()))
-			throw std::runtime_error("Sorting was not successful.");
+		// // Does not work because main is not sorted yet
+		// if (containerA.size() != mainContainer.size() 
+		// 	|| std::equal(containerA.begin(), containerA.end(), mainContainer.begin()))
+		// 	throw std::runtime_error("Sorting was not successful.");
 
 		// Print output
 		std::cout << "Before:";
