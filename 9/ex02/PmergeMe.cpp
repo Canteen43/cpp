@@ -12,7 +12,6 @@ void PmergeMe::mergeInsertB(std::deque<int> input)
 
 void PmergeMe::cheapSort(std::deque<int>& input)
 {
-	std::cout << "Size: " << input.size() << std::endl;
 	if (input.size() == 1)
 		return ;
 
