@@ -1,3 +1,4 @@
+#include <iostream>
 #include "PmergeMe.hpp"
 void PmergeMe::mergeInsertA(std::list<int> input)
 {
@@ -11,6 +12,7 @@ void PmergeMe::mergeInsertB(std::deque<int> input)
 
 void PmergeMe::cheapSort(std::deque<int>& input)
 {
+	std::cout << "Size: " << input.size() << std::endl;
 	if (input.size() == 1)
 		return ;
 
@@ -18,7 +20,8 @@ void PmergeMe::cheapSort(std::deque<int>& input)
 	std::deque<int> temp;
 	auto next = input.end();
 	next--;
-	while (next != input.begin() && next != (input.begin() - 1))
+	auto last = input.begin();
+	while (1)
 	{
 		auto A = next;
 		auto B = A - 1;
@@ -33,11 +36,15 @@ void PmergeMe::cheapSort(std::deque<int>& input)
 			temp.push_back(*B);
 			input.erase(B);
 		}
+		if (B == last + 1)
+			break ;
+		if (B == last)
+			break;
 	}
-	if (input.size() == 1)
+	if (next == last)
 	{
-		temp.push_back(*input.begin());
-		input.erase(input.begin());
+		temp.push_back(*next);
+		input.erase(next);
 	}
 
 	// Sorting bigger elements

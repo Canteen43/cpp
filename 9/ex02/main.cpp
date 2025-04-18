@@ -59,8 +59,9 @@ int main(int argc, char** argv)
 		// Other containers
 		std::list<int> containerA(mainContainer.begin(), mainContainer.end());
 		std::deque<int> containerB(mainContainer.begin(), mainContainer.end());
-		double runTimeA = timedRun(PmergeMe::mergeInsertA, containerA);
+		// double runTimeA = timedRun(PmergeMe::mergeInsertA, containerA);
 		double runTimeB = timedRun(PmergeMe::mergeInsertB, containerB);
+		(void)runTimeB;
 
 		// // Does not work because main is not sorted yet
 		// if (containerA.size() != mainContainer.size() 
@@ -68,28 +69,28 @@ int main(int argc, char** argv)
 		// 	throw std::runtime_error("Sorting was not successful.");
 
 		// Print output
-		std::cout << "Before:";
-		for (std::vector<int>::iterator it = mainContainer.begin(); it != mainContainer.end(); ++it)
-			std::cout << " " << *it;
-		std::cout << "\n";
+		// std::cout << "Before:";
+		// for (std::vector<int>::iterator it = mainContainer.begin(); it != mainContainer.end(); ++it)
+		// 	std::cout << " " << *it;
+		// std::cout << "\n";
 
-		std::sort(mainContainer.begin(), mainContainer.end());
-		std::cout << "After:";
-		for (std::vector<int>::iterator it = mainContainer.begin(); it != mainContainer.end(); ++it)
-			std::cout << " " << *it;
-		std::cout << "\n";
+		// std::sort(mainContainer.begin(), mainContainer.end());
+		// std::cout << "After:";
+		// for (std::vector<int>::iterator it = mainContainer.begin(); it != mainContainer.end(); ++it)
+		// 	std::cout << " " << *it;
+		// std::cout << "\n";
 
-		std::cout << "Time to process a range of "
-			<< mainContainer.size() 
-			<< " elements with std::list : "
-			<< runTimeA
-			<< " microseconds\n";
+		// std::cout << "Time to process a range of "
+		// 	<< mainContainer.size() 
+		// 	<< " elements with std::list : "
+		// 	<< runTimeA
+		// 	<< " microseconds\n";
 
-		std::cout << "Time to process a range of "
-			<< mainContainer.size() 
-			<< " elements with std::deque : "
-			<< runTimeB
-			<< " microseconds\n";
+		// std::cout << "Time to process a range of "
+		// 	<< mainContainer.size() 
+		// 	<< " elements with std::deque : "
+		// 	<< runTimeB
+		// 	<< " microseconds\n";
 	}
 	catch(const std::exception& e)
 	{
