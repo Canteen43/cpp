@@ -60,21 +60,20 @@ void PmergeMe::cheapSort(std::deque<int>& input)
 	
 	// Insert smaller elements
 	for (auto it = smaller.begin(); it != smaller.end(); ++it)
-		lazyInsert(input, *it);
+		binaryInsert(input, *it, 0, input.size());
 }
 
-void PmergeMe::lazyInsert(std::deque<int>& container, int value)
+void PmergeMe::binaryInsert(std::deque<int>& container, int value, int lowEnd, int highEnd)
 {
-	auto it = container.begin();
-	while (it != container.end())
+	int mid;
+	while (lowEnd != highEnd)
 	{
-		if (*it > value)
-		{
-			container.insert(it, value);
-			return ;
-		}
+		mid = (lowEnd + highEnd) / 2;
+		if (value > container[mid])
+			lowEnd = mid + 1;
+		else
+			highEnd = mid;
 		comparisonCount++;
-		++it;
 	}
-	container.insert(it, value);
+	container.insert(container.begin() + lowEnd, value);
 }
