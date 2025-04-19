@@ -1,58 +1,66 @@
 #include <iostream>
+#include <algorithm>  // For std::max and std::min
 #include "PmergeMe.hpp"
-void PmergeMe::mergeInsertA(std::list<int> input)
+
+extern int comparisonCount;
+
+void PmergeMe::mergeInsertA(std::list<int>& input)
 {
 	input.sort();
 }
-void PmergeMe::mergeInsertB(std::deque<int> input)
+void PmergeMe::mergeInsertB(std::deque<int>& input)
 {
 	// std::sort(input.begin(), input.end());
 	cheapSort(input);
 }
 
+void compare(int first, int second, int* max, int* min)
+{
+	if (first > second)
+	{
+		*max = first;
+		*min = second;
+	}
+	else
+	{
+		*max = second;
+		*min = first;
+	}
+	comparisonCount++;
+}
+
 void PmergeMe::cheapSort(std::deque<int>& input)
 {
-	if (input.size() == 1)
+	int size = input.size();
+	if (size == 1)
 		return ;
 
-	// Putting smaller neighbors in temporary array
-	std::deque<int> temp;
-	auto next = input.end();
-	next--;
-	auto last = input.begin();
-	while (1)
+	// Putting neighbors in one of the two arrays
+	std::deque<int> smaller;
+	std::deque<int> bigger;
+	int max;
+	int min;
+	int i = 0;
+	while (i + 1 < size)
 	{
-		auto A = next;
-		auto B = A - 1;
-		next -= 2;
-		if (*A < *B)
-		{
-			temp.push_back(*A);
-			input.erase(A);
-		}
-		else
-		{
-			temp.push_back(*B);
-			input.erase(B);
-		}
-		if (B == last + 1)
-			break ;
-		if (B == last)
-			break;
+		compare(input[i], input[i + 1], &max, &min);
+		bigger.push_back(max);
+		smaller.push_back(min);
+		i += 2;
 	}
-	if (next == last)
-	{
-		temp.push_back(*next);
-		input.erase(next);
-	}
+	if (i == size - 1)
+		smaller.push_back(input[i]);
 
 	// Sorting bigger elements
-	cheapSort(input);
+	cheapSort(bigger);
+
+	// Putting bigger elements in input array
+	input.clear();
+	input.insert(input.end(), bigger.begin(), bigger.end());
 	
 	// Insert smaller elements
-	for (auto it = temp.begin(); it != temp.end(); ++it)
+	for (auto it = smaller.begin(); it != smaller.end(); ++it)
 		lazyInsert(input, *it);
-
 }
 
 void PmergeMe::lazyInsert(std::deque<int>& container, int value)
@@ -65,6 +73,7 @@ void PmergeMe::lazyInsert(std::deque<int>& container, int value)
 			container.insert(it, value);
 			return ;
 		}
+		comparisonCount++;
 		++it;
 	}
 	container.insert(it, value);

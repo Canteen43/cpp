@@ -22,13 +22,15 @@ Output:
 #include "PmergeMe.hpp"
 
 template <typename Func, typename Arg>
-double timedRun(Func f, Arg a)
+double timedRun(Func f, Arg& a)
 {
 	std::clock_t start = std::clock();
 	f(a);
 	std::clock_t end = std::clock();
 	return 1000000 * double(end - start) / CLOCKS_PER_SEC;
 }
+
+int comparisonCount = 0;
 
 // Forbidden containers: std::map, std::stack
 int main(int argc, char** argv)
@@ -41,9 +43,6 @@ int main(int argc, char** argv)
 
 		// Fill container
 		std::vector<int> mainContainer;
-		std::vector<int> mainSorted = mainContainer;
-		std::sort(mainSorted.begin(), mainSorted.end());
-
 		for (int i = 1; i < argc; ++i)
 		{
 			int value;
@@ -58,19 +57,29 @@ int main(int argc, char** argv)
 			mainContainer.push_back(value);
 		}
 
+		// Create sorted container
+		std::vector<int> mainSorted(mainContainer);
+		std::sort(mainSorted.begin(), mainSorted.end());
+
 		// Other containers
 		std::list<int> containerA(mainContainer.begin(), mainContainer.end());
 		std::deque<int> containerB(mainContainer.begin(), mainContainer.end());
 		double runTimeA = timedRun(PmergeMe::mergeInsertA, containerA);
 		double runTimeB = timedRun(PmergeMe::mergeInsertB, containerB);
 
+		// Print output
+		std::cout << "B:";
+		for (auto it = containerB.begin(); it != containerB.end(); ++it)
+			std::cout << " " << *it;
+		std::cout << "\n";
+
 		// Check if sorting worked
 		if (containerA.size() != mainSorted.size() 
-		|| std::equal(containerA.begin(), containerA.end(), mainSorted.begin()))
+		|| !std::equal(containerA.begin(), containerA.end(), mainSorted.begin()))
 			throw std::runtime_error("Sorting of A was not successful.");
 		if (containerB.size() != mainSorted.size() 
-			|| std::equal(containerB.begin(), containerB.end(), mainSorted.begin()))
-			throw std::runtime_error("Sorting of Bwas not successful.");
+			|| !std::equal(containerB.begin(), containerB.end(), mainSorted.begin()))
+			throw std::runtime_error("Sorting of B was not successful.");
 
 		// Print output
 		std::cout << "Before:";
@@ -79,7 +88,7 @@ int main(int argc, char** argv)
 		std::cout << "\n";
 
 		std::cout << "After:";
-		for (std::vector<int>::iterator it = mainContainer.begin(); it != mainContainer.end(); ++it)
+		for (std::vector<int>::iterator it = mainSorted.begin(); it != mainSorted.end(); ++it)
 			std::cout << " " << *it;
 		std::cout << "\n";
 
@@ -94,6 +103,8 @@ int main(int argc, char** argv)
 			<< " elements with std::deque : "
 			<< runTimeB
 			<< " microseconds\n";
+
+		std::cout << "Number of comparisons: " << comparisonCount << "\n";
 	}
 	catch(const std::exception& e)
 	{

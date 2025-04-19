@@ -4,7 +4,7 @@ LOGFILE="pmerge_run.log"
 > "$LOGFILE"  # Clear the logfile
 
 args=()
-for i in {0..100}; do
+for i in {250..200}; do
     args+=("$i")
     echo "Running: ./PmergeMe ${args[*]}" >> "$LOGFILE"
     
@@ -14,13 +14,9 @@ for i in {0..100}; do
     output=$(./PmergeMe "${args[@]}" 2>&1)
     status=$?
 
-    if [ $status -eq 139 ]; then  # Segmentation fault
-        size_line=$(echo "$output" | grep '^Size' | tail -n 1)
-        iter_line=$(echo "$output" | grep '^Iteration' | tail -n 1)
+    if [ $status -ne 0 ]; then  # Segmentation fault
         
-        echo "❌ Segfault (exit 139)" >> "$LOGFILE"
-        [ -n "$size_line" ] && echo "$size_line" >> "$LOGFILE"
-        [ -n "$iter_line" ] && echo "$iter_line" >> "$LOGFILE"
+        echo "❌ Exit status: $status" >> "$LOGFILE"
     else
         echo "✅ Exit status: $status" >> "$LOGFILE"
     fi
