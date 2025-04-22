@@ -54,7 +54,7 @@ int main(int argc, char** argv)
 				throw std::runtime_error(std::string("Argument '") + argv[i] + "' is off limits");
 			if (value < 0)
 				throw std::runtime_error(std::string("Argument '") + argv[i] + "' is smaller than zero");
-			if (std::find(mainContainer.begin(), mainContainer.end(), value) == mainContainer.end())
+			if (std::find(mainContainer.begin(), mainContainer.end(), value) != mainContainer.end())
 				throw std::runtime_error(std::string("Argument '") + argv[i] + "' is a duplicate");
 			mainContainer.push_back(value);
 		}

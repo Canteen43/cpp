@@ -4,7 +4,7 @@ LOGFILE="pmerge_run.log"
 > "$LOGFILE"  # Clear the logfile
 
 args=()
-for i in {250..200}; do
+for i in {31..0}; do
     args+=("$i")
     echo "Running: ./PmergeMe ${args[*]}" >> "$LOGFILE"
     

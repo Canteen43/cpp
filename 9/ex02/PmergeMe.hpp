@@ -7,6 +7,7 @@ struct smallNeighbor {
 	int value;
 	int bigNeighborVal;
 	smallNeighbor(int sv, int bv) : value(sv), bigNeighborVal(bv) {}
+	smallNeighbor() : value(-1), bigNeighborVal(-1) {}
 };
 
 typedef struct smallNeighbor tSmall;
