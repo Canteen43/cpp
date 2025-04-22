@@ -76,25 +76,15 @@ void PmergeMe::cheapSort(std::deque<int>& input)
 		}
 	}
 
-	// Print statement
-	std::cout << "small Group:" << std::endl;
-	for (unsigned long j = 0; j < smallGroup.size(); ++j)
-	{
-		std::cout << "Index: " << j
-			<< ", Value: " << smallGroup[j].value
-			<< ", bigNeighborVal: " << smallGroup[j].bigNeighborVal 
-			<< std::endl;
-	}
-
 	// Handling unpaired value for odd arrays
 	int unpairedValue = -1;
 	if (inputSize % 2 == 1)
 		unpairedValue = input.back();
 
-	// Sorting the bigger neighbors
+	// Sorting the bigger neighbors recursively
 	cheapSort(bigGroup);
 
-	// Putting bigger elements in input array
+	// Putting bigger elements back into original input array
 	input.clear();
 	input.insert(input.end(), bigGroup.begin(), bigGroup.end());
 
@@ -103,17 +93,8 @@ void PmergeMe::cheapSort(std::deque<int>& input)
 	smallGroupOrdered.resize(inputSize / 2);
 	for (int i = 0; i < inputSize / 2; ++i)
 	{
-		int index = getIndex(bigGroup, smallGroup[i].bigNeighborVal);
-		smallGroupOrdered[index] = smallGroup[i];
-	}
-	// Print statement	
-	std::cout << "small Group Ordered:" << std::endl;
-	for (unsigned long j = 0; j < smallGroupOrdered.size(); ++j)
-	{
-		std::cout << "Index: " << j
-			<< ", Value: " << smallGroupOrdered[j].value
-			<< ", bigNeighborVal: " << smallGroupOrdered[j].bigNeighborVal 
-			<< std::endl;
+		int new_index = getIndex(bigGroup, smallGroup[i].bigNeighborVal);
+		smallGroupOrdered[new_index] = smallGroup[i];
 	}
 	
 	// Insert smaller elements
@@ -129,6 +110,8 @@ void PmergeMe::cheapSort(std::deque<int>& input)
 		++i;
 	}
 	}
+
+	// Inserting leftover unpaired value
 	if (inputSize % 2 == 1)
 		binaryInsert(input, unpairedValue, 0, inputSize - 1);
 }
