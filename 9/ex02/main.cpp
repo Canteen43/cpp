@@ -54,8 +54,20 @@ int main(int argc, char** argv)
 				throw std::runtime_error(std::string("Argument '") + argv[i] + "' is off limits");
 			if (value < 0)
 				throw std::runtime_error(std::string("Argument '") + argv[i] + "' is smaller than zero");
+			if (std::find(mainContainer.begin(), mainContainer.end(), value) == mainContainer.end())
+				throw std::runtime_error(std::string("Argument '") + argv[i] + "' is a duplicate");
 			mainContainer.push_back(value);
 		}
+
+		// Create order of indexes to insert
+		std::vector<int> order = {0,2,1,4,3,10,9,8,7,6,5};
+		// int capacity = (argc - 1) / 2;
+		// order.reserve(capacity);
+		// order[0] = 0;
+		// int group = 2;
+		// int groupNext = 2;
+		// for (int i = 0; i < capacity; ++i)
+		// {}
 
 		// Create sorted container
 		std::vector<int> mainSorted(mainContainer);

@@ -3,6 +3,14 @@
 #include <deque>
 #include <list>
 
+struct smallNeighbor {
+	int value;
+	int bigNeighborVal;
+	smallNeighbor(int sv, int bv) : value(sv), bigNeighborVal(bv) {}
+};
+
+typedef struct smallNeighbor tSmall;
+
 class PmergeMe
 {
 	private:
