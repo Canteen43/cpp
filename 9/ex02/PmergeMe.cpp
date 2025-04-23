@@ -110,7 +110,7 @@ void PmergeMe::mergeInsertDeque(std::deque<int>& input)
 }
 
 
-void PmergeMe::mergeInsertList(std::list<int>& input)
+void PmergeMe::mergeInsertVector(std::vector<int>& input)
 {
-	input.sort();
+	std::sort(input.begin(), input.end());
 }

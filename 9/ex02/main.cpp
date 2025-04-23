@@ -98,9 +98,9 @@ int main(int argc, char** argv)
 		}
 
 		// Create my containers and run mergeInsert on them
-		std::list<int> containerA(mainContainer.begin(), mainContainer.end());
+		std::vector<int> containerA(mainContainer.begin(), mainContainer.end());
 		std::deque<int> containerB(mainContainer.begin(), mainContainer.end());
-		double runTimeA = timedRun(PmergeMe::mergeInsertList, containerA);
+		double runTimeA = timedRun(PmergeMe::mergeInsertVector, containerA);
 		int comparisonCountA = comparisonCount;
 		comparisonCount = 0;
 		double runTimeB = timedRun(PmergeMe::mergeInsertDeque, containerB);
@@ -127,7 +127,7 @@ int main(int argc, char** argv)
 
 		std::cout << "Time to process a range of "
 			<< mainContainer.size() 
-			<< " elements with std::list : "
+			<< " elements with std::vector : "
 			<< runTimeA
 			<< " microseconds, Comparisons needed: "
 			<< comparisonCountA
