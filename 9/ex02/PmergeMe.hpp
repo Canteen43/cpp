@@ -19,10 +19,6 @@ class PmergeMe
 	private:
 		PmergeMe();
 		static void compare(int first, int second, int* max, int* min);
-		static int getIndex(std::deque<int> container, int value);
-	public:
-		static void mergeInsertVector(std::vector<int>& input);
-		static void mergeInsertDeque(std::deque<int>& input);
 	// template:
 		template <typename Container>
 		static void binaryInsert(Container& container, int value, int lowEnd, int highEnd)
@@ -39,6 +35,17 @@ class PmergeMe
 			}
 			container.insert(container.begin() + lowEnd, value);
 		}
-
+		template <typename Container>
+		static int getIndex(Container container, int value)
+		{
+			int size = container.size();
+			for(int i = 0; i < size; ++i)
+				if (container[i] == value)
+					return i;
+			throw std::runtime_error("Sorting failed because neighbor was lost");
+		}
+	public:
+		static void mergeInsertVector(std::vector<int>& input);
+		static void mergeInsertDeque(std::deque<int>& input);
 };
 

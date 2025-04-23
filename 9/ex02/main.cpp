@@ -39,6 +39,7 @@ int main(int argc, char** argv)
 {
 	try
 	{
+		std::clock_t start = std::clock();
 		// Check argument count
 		if (argc < 3)
 			throw std::runtime_error("Program requires at least two arguments");
@@ -140,6 +141,11 @@ int main(int argc, char** argv)
 			<< " microseconds, Comparisons needed: "
 			<< comparisonCountB
 			<< "\n";
+
+		std::clock_t end = std::clock();
+		std::cout << "Time to run whole program: "
+			<< 1000000 * double(end - start) / CLOCKS_PER_SEC
+			<< " microseconds\n";
 	}
 	catch(const std::exception& e)
 	{
