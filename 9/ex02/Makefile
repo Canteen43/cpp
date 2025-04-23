@@ -1,6 +1,6 @@
 CXX = c++
-# CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-CXXFLAGS = -Wall -Wextra -Werror -g3 -o0
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+# CXXFLAGS = -Wall -Wextra -Werror -g3 -o0
 TARGET = PmergeMe
 SRC = main.cpp
 SRC += PmergeMe.cpp

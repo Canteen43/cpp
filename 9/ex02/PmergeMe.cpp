@@ -40,7 +40,7 @@ void PmergeMe::mergeInsertDeque(std::deque<int>& input)
 		{
 			compare(input[i], input[i + 1], &bigNeighbor, &smallNeighbor);
 			bigGroup.push_back(bigNeighbor);
-			smallGroup.emplace_back(smallNeighbor, bigNeighbor);
+			smallGroup.push_back(tSmall(smallNeighbor, bigNeighbor));
 		}
 	}
 
@@ -102,7 +102,7 @@ void PmergeMe::mergeInsertVector(std::vector<int>& input)
 		{
 			compare(input[i], input[i + 1], &bigNeighbor, &smallNeighbor);
 			bigGroup.push_back(bigNeighbor);
-			smallGroup.emplace_back(smallNeighbor, bigNeighbor);
+			smallGroup.push_back(tSmall(smallNeighbor, bigNeighbor));
 		}
 	}
 
