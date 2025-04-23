@@ -103,12 +103,6 @@ int main(int argc, char** argv)
 		double runTimeA = timedRun(PmergeMe::mergeInsertA, containerA);
 		double runTimeB = timedRun(PmergeMe::mergeInsertB, containerB);
 
-		// Print output
-		std::cout << "B:";
-		for (auto it = containerB.begin(); it != containerB.end(); ++it)
-			std::cout << " " << *it;
-		std::cout << "\n";
-
 		// Check if sorting worked
 		if (containerA.size() != mainSorted.size() 
 		|| !std::equal(containerA.begin(), containerA.end(), mainSorted.begin()))
