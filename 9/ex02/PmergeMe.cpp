@@ -7,17 +7,8 @@
 extern int comparisonCount;
 extern std::vector<int> order;
 
-void PmergeMe::mergeInsertA(std::list<int>& input)
-{
-	input.sort();
-}
-void PmergeMe::mergeInsertB(std::deque<int>& input)
-{
-	cheapSort(input);
-}
-
-
-void compare(int first, int second, int* max, int* min)
+/* HELPER FUNCTIONS */
+void PmergeMe::compare(int first, int second, int* max, int* min)
 {
 	if (first > second)
 	{
@@ -31,7 +22,7 @@ void compare(int first, int second, int* max, int* min)
 	}
 	comparisonCount++;
 }
-int getIndex(std::deque<int> container, int value)
+int PmergeMe::getIndex(std::deque<int> container, int value)
 {
 	int size = container.size();
 	for(int i = 0; i < size; ++i)
@@ -55,7 +46,9 @@ void PmergeMe::binaryInsert(std::deque<int>& container, int value, int lowEnd, i
 }
 
 
-void PmergeMe::cheapSort(std::deque<int>& input)
+/*Actual sorting functions*/
+
+void PmergeMe::mergeInsertDeque(std::deque<int>& input)
 {
 	// Directly returning if size equals 1 to break recursive loop
 	// (Declaring size as variable to avoid repeated calls)
@@ -83,7 +76,7 @@ void PmergeMe::cheapSort(std::deque<int>& input)
 		unpairedValue = input.back();
 
 	// Sorting the bigger neighbors recursively
-	cheapSort(bigGroup);
+	mergeInsertDeque(bigGroup);
 
 	// Putting bigger elements back into original input array
 	input.clear();
@@ -114,4 +107,10 @@ void PmergeMe::cheapSort(std::deque<int>& input)
 	// Inserting leftover unpaired value
 	if (inputSize % 2 == 1)
 		binaryInsert(input, unpairedValue, 0, inputSize - 1);
+}
+
+
+void PmergeMe::mergeInsertList(std::list<int>& input)
+{
+	input.sort();
 }

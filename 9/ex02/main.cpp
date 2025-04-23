@@ -61,7 +61,11 @@ int main(int argc, char** argv)
 			mainContainer.push_back(value);
 		}
 
-		// Create order of indexes to insert
+		// Create sorted version of main container to validate my own sorting later
+		std::vector<int> mainContainerSorted(mainContainer);
+		std::sort(mainContainerSorted.begin(), mainContainerSorted.end());
+
+		// Fill order vector. It is used to determine the order of inserting the smaller elements
 		{
 			int capacity = (argc - 1) / 2;
 			order.resize(capacity);
@@ -93,22 +97,21 @@ int main(int argc, char** argv)
 			}
 		}
 
-		// Create sorted container
-		std::vector<int> mainSorted(mainContainer);
-		std::sort(mainSorted.begin(), mainSorted.end());
-
-		// Other containers
+		// Create my containers and run mergeInsert on them
 		std::list<int> containerA(mainContainer.begin(), mainContainer.end());
 		std::deque<int> containerB(mainContainer.begin(), mainContainer.end());
-		double runTimeA = timedRun(PmergeMe::mergeInsertA, containerA);
-		double runTimeB = timedRun(PmergeMe::mergeInsertB, containerB);
+		double runTimeA = timedRun(PmergeMe::mergeInsertList, containerA);
+		int comparisonCountA = comparisonCount;
+		comparisonCount = 0;
+		double runTimeB = timedRun(PmergeMe::mergeInsertDeque, containerB);
+		int comparisonCountB = comparisonCount;
 
 		// Check if sorting worked
-		if (containerA.size() != mainSorted.size() 
-		|| !std::equal(containerA.begin(), containerA.end(), mainSorted.begin()))
+		if (containerA.size() != mainContainerSorted.size() 
+		|| !std::equal(containerA.begin(), containerA.end(), mainContainerSorted.begin()))
 			throw std::runtime_error("Sorting of A was not successful.");
-		if (containerB.size() != mainSorted.size() 
-			|| !std::equal(containerB.begin(), containerB.end(), mainSorted.begin()))
+		if (containerB.size() != mainContainerSorted.size() 
+			|| !std::equal(containerB.begin(), containerB.end(), mainContainerSorted.begin()))
 			throw std::runtime_error("Sorting of B was not successful.");
 
 		// Print output
@@ -118,7 +121,7 @@ int main(int argc, char** argv)
 		std::cout << "\n";
 
 		std::cout << "After:";
-		for (std::vector<int>::iterator it = mainSorted.begin(); it != mainSorted.end(); ++it)
+		for (std::vector<int>::iterator it = mainContainerSorted.begin(); it != mainContainerSorted.end(); ++it)
 			std::cout << " " << *it;
 		std::cout << "\n";
 
@@ -126,15 +129,17 @@ int main(int argc, char** argv)
 			<< mainContainer.size() 
 			<< " elements with std::list : "
 			<< runTimeA
-			<< " microseconds\n";
+			<< " microseconds, Comparisons needed: "
+			<< comparisonCountA
+			<< "\n";
 
 		std::cout << "Time to process a range of "
 			<< mainContainer.size() 
 			<< " elements with std::deque : "
 			<< runTimeB
-			<< " microseconds\n";
-
-		std::cout << "Number of comparisons: " << comparisonCount << "\n";
+			<< " microseconds, Comparisons needed: "
+			<< comparisonCountB
+			<< "\n";
 	}
 	catch(const std::exception& e)
 	{

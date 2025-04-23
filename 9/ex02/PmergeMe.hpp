@@ -19,7 +19,9 @@ class PmergeMe
 		static void cheapSort(std::deque<int>& input);
 		static void lazyInsert(std::deque<int>& container, int value);
 		static void binaryInsert(std::deque<int>& container, int value, int lowEnd, int highEnd);
+		static void compare(int first, int second, int* max, int* min);
+		static int getIndex(std::deque<int> container, int value);
 	public:
-		static void mergeInsertA(std::list<int>& input);
-		static void mergeInsertB(std::deque<int>& input);
+		static void mergeInsertList(std::list<int>& input);
+		static void mergeInsertDeque(std::deque<int>& input);
 };
