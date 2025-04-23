@@ -30,20 +30,6 @@ int PmergeMe::getIndex(std::deque<int> container, int value)
 			return i;
 	throw std::runtime_error("Sorting failed because neighbor was lost");
 }
-void PmergeMe::binaryInsert(std::deque<int>& container, int value, int lowEnd, int highEnd)
-{
-	int mid;
-	while (lowEnd != highEnd)
-	{
-		mid = (lowEnd + highEnd) / 2;
-		if (value > container[mid])
-			lowEnd = mid + 1;
-		else
-			highEnd = mid;
-		comparisonCount++;
-	}
-	container.insert(container.begin() + lowEnd, value);
-}
 
 
 /*Actual sorting functions*/
