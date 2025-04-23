@@ -5,6 +5,7 @@
 #include "PmergeMe.hpp"
 
 extern int comparisonCount;
+extern std::vector<int> order;
 
 void PmergeMe::mergeInsertA(std::list<int>& input)
 {
@@ -99,7 +100,6 @@ void PmergeMe::cheapSort(std::deque<int>& input)
 	
 	// Insert smaller elements
 	{
-	std::vector<int> order = {0,2,1,4,3,10,9,8,7,6,5};
 	int i = 0;
 	for (int inserted = 0; inserted < inputSize / 2; ++inserted)
 	{

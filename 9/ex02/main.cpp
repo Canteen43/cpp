@@ -32,6 +32,8 @@ double timedRun(Func f, Arg& a)
 
 int comparisonCount = 0;
 
+std::vector<int> order;
+
 // Forbidden containers: std::map, std::stack
 int main(int argc, char** argv)
 {
@@ -60,14 +62,36 @@ int main(int argc, char** argv)
 		}
 
 		// Create order of indexes to insert
-		std::vector<int> order = {0,2,1,4,3,10,9,8,7,6,5};
-		// int capacity = (argc - 1) / 2;
-		// order.reserve(capacity);
-		// order[0] = 0;
-		// int group = 2;
-		// int groupNext = 2;
-		// for (int i = 0; i < capacity; ++i)
-		// {}
+		{
+			int capacity = (argc - 1) / 2;
+			order.resize(capacity);
+			int group = 2;
+			int groupNext = 2;
+			int groupCount = 0;
+			int lastStart = 0;
+			int tmp;
+			int number;
+			for (int i = 1; i < capacity; ++i)
+			{
+				if (groupCount == group)
+				{
+					tmp = groupNext;
+					groupNext = groupNext + 2 * group;
+					group = tmp;
+					groupCount = 0;
+				}
+				if (groupCount == 0)
+				{
+					number = lastStart + group;
+					lastStart = number;
+				}
+				while (number >= capacity)
+					--number;
+				order[i] = number;
+				++groupCount;
+				--number;
+			}
+		}
 
 		// Create sorted container
 		std::vector<int> mainSorted(mainContainer);
