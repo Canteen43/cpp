@@ -1,36 +1,106 @@
-# 42 C++ Piscine Projects (Modules 00–09)
+# CPP Modules (00-09)
 
-A collection of ten C++ modules (Module 00 → 09) from the 42 School C++ Piscine, written in **C++98**. Each module builds upon the previous to teach core C++ and OOP concepts.
+A comprehensive collection of C++ exercises from 42 school that progressively teach object-oriented programming concepts from basic syntax to advanced features like templates and STL containers.
 
----
+## Overview
 
-## 📘 Module Overview
+This repository contains my solutions to the C++ modules (CPP 00 through CPP 09) from the 42 school curriculum. These modules provide a structured introduction to C++ programming, covering fundamental concepts through advanced object-oriented programming techniques.
 
-| Module  | Title / Focus                                   | Description                                                                 |
-|--------:|--------------------------------------------------|-----------------------------------------------------------------------------|
-| **00**  | **C Basics & I/O**                               | Learn namespaces, classes, iostream, member functions, initialization lists, `static` & `const` qualifiers, and class foundations. |
-| **01**  | **Memory Management**                            | Practice dynamic allocation (`new`/`delete`), pointers, references, and `switch` statements. |
-| **02**  | **Operator Overloading & Canonical Form**        | Implement operators, adhere to the Orthodox Canonical Class (copy constructor, assignment operator, destructor). |
-| **03**  | **Inheritance**                                  | Create class hierarchies with single inheritance, base vs. derived classes, and constructor/destructor chaining. |
-| **04**  | **Polymorphism & Abstraction**                   | Define virtual functions, abstract base classes (interfaces), and enable runtime polymorphism. |
-| **05**  | **Loops & Exception Handling**                   | Use loops (`for`, `while`), handle errors with `try` / `throw` / `catch`, and define your own exceptions. |
-| **06**  | **C++ Casting**                                  | Explore safe casts: `static_cast`, `dynamic_cast`, `const_cast`, and `reinterpret_cast`. |
-| **07**  | **Templates**                                    | Write generic reusable code using function and class templates. |
-| **08**  | **Containers & Iterators**                       | Build templated containers, custom iterators, and implement algorithm patterns (e.g. sort, filter). |
-| **09**  | **Standard Template Library (STL)**              | Apply STL containers (`vector`, `map`, `set`, etc.) and algorithms (`std::sort`, `find`, `for_each`, ...). |
+## Module Breakdown
 
----
+### CPP Module 00 - Namespaces, Classes, Member Functions
+- **Topics:** Basic C++ syntax, namespaces, classes, member functions, stdio streams
+- **Key concepts:** Initialization lists, static/const members, basic class design
+- **Projects:** Megaphone, PhoneBook with Contact class
 
-## ✅ Getting Started
+### CPP Module 01 - Memory Allocation, Pointers, References
+- **Topics:** Memory allocation, pointers to members, references, switch statements
+- **Key concepts:** Stack vs heap allocation, reference semantics, pointer arithmetic
+- **Projects:** Zombie horde, file replacement, Harl logger
 
-### Prerequisites
-- A C++98-compatible compiler (e.g., `g++`, version ≥ 4.8).
-- Make (if using provided `Makefile`s or shell scripts).
+### CPP Module 02 - Ad-hoc Polymorphism, Operator Overloading
+- **Topics:** Orthodox canonical form, operator overloading, fixed-point numbers
+- **Key concepts:** Copy constructors, assignment operators, canonical class form
+- **Projects:** Fixed-point number class, BSP (Binary Space Partitioning)
 
-### Build & Run
-Each module is self-contained:
+### CPP Module 03 - Inheritance
+- **Topics:** Inheritance, access specifiers, diamond problem basics
+- **Key concepts:** Base/derived classes, protected members, virtual inheritance introduction
+- **Projects:** ClapTrap, ScavTrap, FragTrap hierarchy
+
+### CPP Module 04 - Subtype Polymorphism, Abstract Classes
+- **Topics:** Polymorphism, abstract classes, interfaces, virtual functions
+- **Key concepts:** Virtual destructors, pure virtual functions, abstract base classes
+- **Projects:** Animal/Dog/Cat hierarchy, Brain class, abstract Animal
+
+### CPP Module 05 - Repetition and Exceptions
+- **Topics:** Exceptions, try/catch blocks, custom exception classes
+- **Key concepts:** Exception handling, RAII, bureaucrat hierarchy
+- **Projects:** Bureaucrat, Form classes, exception safety
+
+### CPP Module 06 - C++ Casts
+- **Topics:** Type casting, static_cast, dynamic_cast, const_cast, reinterpret_cast
+- **Key concepts:** Safe casting, type identification, serialization
+- **Projects:** Scalar conversion, serialization, type identification
+
+### CPP Module 07 - C++ Templates
+- **Topics:** Function templates, class templates, template specialization
+- **Key concepts:** Generic programming, template instantiation, STL introduction
+- **Projects:** Function templates, Array class template, iter function
+
+### CPP Module 08 - Templated Containers, Iterators, Algorithms
+- **Topics:** STL containers, iterators, algorithms, template metaprogramming
+- **Key concepts:** Container design, iterator patterns, algorithm usage
+- **Projects:** Easy find, Span class, MutantStack
+
+### CPP Module 09 - STL Containers and Advanced Topics
+- **Topics:** Advanced STL usage, container performance, real-world applications
+- **Key concepts:** Container selection, performance optimization, practical STL usage
+- **Projects:** Bitcoin exchange, RPN calculator, merge-insertion sort
+
+## Key Learning Objectives
+
+- **Object-Oriented Programming:** Classes, inheritance, polymorphism, encapsulation
+- **Memory Management:** RAII, smart pointers, resource management
+- **Modern C++ Features:** Templates, STL, exception handling, casting
+- **Design Patterns:** Orthodox canonical form, abstract factory, strategy pattern
+- **Performance:** Algorithm complexity, container selection, optimization
+
+## Compilation
+
+Each module contains its own Makefile. To compile any exercise:
 
 ```bash
-cd cpp-module-03/          # prefix = module folder (00–09)
-make                        # or `g++ -std=c++98 *.cpp -o module`
-./module                    # run compiled executable
+cd cpp_module_XX/ex_XX
+make
+```
+
+All projects are compiled with:
+```bash
+c++ -Wall -Wextra -Werror -std=c++98
+```
+
+## Usage
+
+Each module contains multiple exercises (ex00, ex01, etc.) with their own executables. Navigate to the specific exercise directory and run:
+
+```bash
+./program_name [arguments]
+```
+
+## Standards and Constraints
+
+- **C++ Standard:** C++98 compliance required
+- **Forbidden:** STL containers (until module 08/09), using namespace std, friend keywords
+- **Required:** Orthodox canonical form for classes, proper memory management
+- **Coding Style:** 42 Norm compliance, proper file organization
+
+## Testing
+
+Each exercise includes test cases and example usage. Many modules build upon previous concepts, so sequential completion is recommended.
+
+---
+
+*This project is part of the 42 School curriculum.*
+
+*README generated by Claude (Anthropic)*
